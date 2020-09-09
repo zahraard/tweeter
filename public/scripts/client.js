@@ -26,32 +26,38 @@ $(function () {
     let $tweet;
     for (const tweet of tweets) {
       $tweet = createTweetElement(tweet);
-      $("#tweets-container").append($tweet);
+      $("#tweets-container").prepend($tweet);
     }
   };
-  
-// Ajax call to read the tweets from db
-  function loadTweets(){
-    $.get('/tweets').then(data => {
-      renderTweets(data);
-    }).catch((err)=> console.log(err));
+
+  // Ajax call to read the tweets from db
+  function loadTweets() {
+    $.get("/tweets")
+      .then((data) => {
+        $("#tweets-container").empty();
+        renderTweets(data);
+      })
+      .catch((err) => console.log(err));
   }
-  loadTweets()
+  loadTweets();
 
   //Ajax call to post the new tweet
-  $("form").on("submit", function(event){
+  $("form").on("submit", function (event) {
     event.preventDefault();
     const text = event.target.text.value;
-    if(text === '' ){
-      alert("Your tweet needs text!!")
-    } else if( text.length > 140){
-      alert('Your tweet content is too long!!')
+    if (text === "") {
+      alert("Your tweet needs text!!");
+    } else if (text.length > 140) {
+      alert("Your tweet content is too long!!");
     } else {
       const data = $("form").serialize();
-      $.post('/tweets/', data).then((response)=>{
-        console.log(response);
-        $('form')[0].reset();
-      }).catch((err)=> console.log(err));
+      $.post("/tweets/", data)
+        .then((response) => {
+          loadTweets();
+          $("form")[0].reset();
+          $(".counter").html('<strong>140</strong>')
+        })
+        .catch((err) => console.log(err));
     }
   });
 });

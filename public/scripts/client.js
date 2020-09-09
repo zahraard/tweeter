@@ -34,16 +34,24 @@ $(function () {
   function loadTweets(){
     $.get('/tweets').then(data => {
       renderTweets(data);
-    })
+    }).catch((err)=> console.log(err));
   }
   loadTweets()
 
   //Ajax call to post the new tweet
-  $("form#tweet-form").on("submit", function(event){
+  $("form").on("submit", function(event){
     event.preventDefault();
-    const data = $( "form" ).serialize();
-    $.post('/tweets/', data).then((response)=>{
-      console.log(response);
-    }) 
+    const text = event.target.text.value;
+    if(text === '' ){
+      alert("Your tweet needs text!!")
+    } else if( text.length > 140){
+      alert('Your tweet content is too long!!')
+    } else {
+      const data = $("form").serialize();
+      $.post('/tweets/', data).then((response)=>{
+        console.log(response);
+        $('form')[0].reset();
+      }).catch((err)=> console.log(err));
+    }
   });
 });

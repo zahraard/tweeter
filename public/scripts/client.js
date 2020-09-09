@@ -1,30 +1,31 @@
-$(function(){
+$(function () {
   const data = [
     {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png"
-        ,
-        "handle": "@SirIsaac"
+      user: {
+        name: "Newton",
+        avatars: "https://i.imgur.com/73hZDYK.png",
+        handle: "@SirIsaac",
       },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
+      content: {
+        text:
+          "If I have seen further it is by standing on the shoulders of giants",
       },
-      "created_at": 1461116232227
+      created_at: 1461116232227,
     },
     {
-      "user": {
-        "name": "Descartes",
-        "avatars": "https://i.imgur.com/nlhLi3I.png",
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
+      user: {
+        name: "Descartes",
+        avatars: "https://i.imgur.com/nlhLi3I.png",
+        handle: "@rd",
       },
-      "created_at": 1461113959088
-    }
-  ]
+      content: {
+        text: "Je pense , donc je suis",
+      },
+      created_at: 1461113959088,
+    },
+  ];
 
-  function createTweetElement(tweet){
+  function createTweetElement(tweet) {
     const $tweet = $(`<article class="tweet">
     <header>
       <div>
@@ -44,18 +45,24 @@ $(function(){
         <img src="/images/heart.png">
       </span>
     </footer>
-  </article>`)
-  return $tweet;
+  </article>`);
+    return $tweet;
   }
-  const renderTweets = function(tweets) {
+  const renderTweets = function (tweets) {
     let $tweet;
-    for (const tweet of tweets){
-      console.log(tweet)
+    for (const tweet of tweets) {
       $tweet = createTweetElement(tweet);
-      $('.tweets-container').append($tweet);
+      $("#tweets-container").append($tweet);
     }
-  }
-
+  };
   renderTweets(data);
-})
 
+  $("form#tweet-form").on("submit", function(event){
+    event.preventDefault();
+    const data = $( "form" ).serialize();
+    $.post('/tweets/', data).then((response)=>{
+      console.log(response);
+    }) 
+  
+  });
+});

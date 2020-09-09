@@ -1,0 +1,17 @@
+nav{
+  height: 120px;
+  width: 100%;
+  background: #4056A1;
+  color: #FFF;
+  padding: 1.5em;
+  display:flex;
+  align-items: center;
+  position: fixed;
+  top:0;
+}
+nav span.logo{
+  font-family: 'Bungee', cursive;
+}
+nav span.right-text{
+  margin-left: auto;
+}

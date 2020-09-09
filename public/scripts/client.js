@@ -50,7 +50,9 @@ $(function () {
     } else if (text.length > 140) {
       alert("Your tweet content is too long!!");
     } else {
-      const data = $("form").serialize();
+      const formData = $("form").serialize();
+      const data = escape(formData)
+      console.log(data)
       $.post("/tweets/", data)
         .then((response) => {
           loadTweets();
@@ -60,4 +62,11 @@ $(function () {
         .catch((err) => console.log(err));
     }
   });
+  
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
+
 });

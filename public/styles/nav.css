@@ -1,17 +1,44 @@
-nav{
+nav {
   height: 120px;
   width: 100%;
-  background: #4056A1;
-  color: #FFF;
+  background: #4056a1;
+  color: #fff;
   padding: 1.5em;
-  display:flex;
-  align-items: center;
   position: fixed;
-  top:0;
+  top: 0;
+  display: flex;
+  align-items: center;
 }
-nav span.logo{
-  font-family: 'Bungee', cursive;
+
+nav span.logo {
+  font-family: "Bungee", cursive;
 }
-nav span.right-text{
+nav div.right-text {
   margin-left: auto;
+  text-align: center;
+}
+
+div.right-text span {
+  display: block;
+  line-height: 0.8;
+}
+@keyframes jump {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 6px;
+  }
+  100% {
+    top: 0;
+  }
+}
+.right-text img {
+  position: relative;
+}
+.right-text:hover {
+  cursor: pointer;
+}
+.right-text:hover img {
+  animation: jump 2s infinite;
 }

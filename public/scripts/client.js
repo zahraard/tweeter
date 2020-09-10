@@ -78,4 +78,8 @@ $(function () {
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
+
+  $('.right-text').on('click',()=>{
+    $('.new-tweet').slideToggle();
+  })
 });

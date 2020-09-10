@@ -81,5 +81,6 @@ $(function () {
 
   $('.right-text').on('click',()=>{
     $('.new-tweet').slideToggle();
+    $('#tweet-text').focus();
   })
 });

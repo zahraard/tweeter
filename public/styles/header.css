@@ -1,17 +1,21 @@
-body > header{
-  height: 400px;
+header#main-header {
+  height: 500px;
   width: 100%;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   background: orange;
   background-image: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
   color: #fff;
-  margin-top: 120px;
 }
 
-header span{
+header span {
   font-weight: 300;
 }
 
+@media only screen and (min-width: 1024px) {
+  header#main-header {
+    margin: 120px 50px 0;
+  }
+}

@@ -1,6 +1,5 @@
-
 .new-tweet {
-  margin: 70px 40px 40px;;
+  margin: 10px 40px 50px;
   display: none;
 }
 
@@ -22,7 +21,7 @@
   outline: none;
 }
 
-#tweet-text~.tweet-label {
+#tweet-text ~ .tweet-label {
   display: none;
 }
 
@@ -34,7 +33,7 @@
 }
 .tweet-button {
   font-family: Bungee;
-  background-color: #4056A1;
+  background-color: #4056a1;
   color: white;
   outline: none;
 }
@@ -52,20 +51,34 @@
   background-color: none;
 }
 
-
-.error{
+.error {
   display: none;
-  color:#d9534f;
-  width:80%;
+  color: #d9534f;
+  width: 80%;
   background-color: #ffffff;
-  padding:30px;
-  border:1px solid #eee;
-  border-left-width:5px;
+  padding: 30px;
+  border: 1px solid #eee;
+  border-left-width: 5px;
   border-radius: 3px;
-  margin:10px auto 35px;
-  font-family: 'Open Sans', sans-serif;
+  margin: 10px auto 35px;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
   font-weight: 600;
   border-left-color: #d9534f; /* Left side border color */
-  background-color: rgba(217, 83, 79, 0.1); /*Same color as the left border with reduced alpha to 0.1*/
+  background-color: rgba(
+    217,
+    83,
+    79,
+    0.1
+  ); /*Same color as the left border with reduced alpha to 0.1*/
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    flex: 3;
+    margin-top: 120px;
+  }
+  #main-header {
+    flex: 2;
+  }
 }

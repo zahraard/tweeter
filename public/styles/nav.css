@@ -1,7 +1,6 @@
 nav {
   height: 120px;
   width: 100%;
-  background: #4056a1;
   color: #fff;
   padding: 1.5em;
   position: fixed;
@@ -41,4 +40,8 @@ div.right-text span {
 }
 .right-text:hover img {
   animation: jump 2s infinite;
+}
+
+@media only screen and (min-width: 1024px) {
+  nav {background: #4056a1;}
 }

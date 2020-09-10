@@ -46,27 +46,36 @@ $(function () {
     event.preventDefault();
     const text = event.target.text.value;
     if (text === "") {
-      alert("Your tweet needs text!!");
+      $(".error")
+        .html("Error: Tweet can't be empty!!")
+        .css("display", "block");
+      setTimeout(() => {
+        $(".error").css("display", "none");
+      }, 4000);
     } else if (text.length > 140) {
-      alert("Your tweet content is too long!!");
+      $(".error")
+        .html("Error: Your tweet content is too long!!")
+        .css("display", "block");
+      setTimeout(() => {
+        $(".error").css("display", "none");
+      }, 4000);
     } else {
       const formData = $("form").serialize();
-      const data = escape(formData)
-      console.log(data)
+      const data = escape(formData);
+      console.log(data);
       $.post("/tweets/", data)
         .then((response) => {
           loadTweets();
           $("form")[0].reset();
-          $(".counter").html('<strong>140</strong>')
+          $(".counter").html("<strong>140</strong>");
         })
         .catch((err) => console.log(err));
     }
   });
-  
-  const escape =  function(str) {
-    let div = document.createElement('div');
+
+  const escape = function (str) {
+    let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
-  }
-
+  };
 });

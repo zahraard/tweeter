@@ -1,37 +1,38 @@
-$(function() {
+$(function () {
   //render time using moment.js
-  const renderTime = function(tweet) {
+  const renderTime = function (tweet) {
     return moment(tweet.created_at).fromNow();
   };
 
   //create template for new tweet
   function createTweetElement(tweet) {
     const time = renderTime(tweet);
-    const $tweet = $(`<article class="tweet">
-    <header>
-      <div>
-        <img src=${tweet.user.avatars}>
-        <span>${tweet.user.name}</span>
-      </div>
-      <p>${tweet.user.handle}</p>
-    </header>
-    <div class="tweet-content">
-      <p>${tweet.content.text}</p>
-    </div>
-    <footer>
-      <p class="published-date">${time}</p>
-      <span id="tweet-icons">
-        <img src="/images/flag24.png">
-        <img src="/images/retweet30px.png">
-        <img src="/images/heart.png">
-      </span>
-    </footer>
-  </article>`);
+    const $tweet = $(`
+        <article class="tweet">
+          <header>
+            <div>
+              <img src=${tweet.user.avatars}>
+              <span>${tweet.user.name}</span>
+            </div>
+            <p>${tweet.user.handle}</p>
+          </header>
+          <div class="tweet-content">
+            <p>${tweet.content.text}</p>
+          </div>
+          <footer>
+            <p class="published-date">${time}</p>
+            <span id="tweet-icons">
+              <img src="/images/flag24.png">
+              <img src="/images/retweet30px.png">
+              <img src="/images/heart.png">
+            </span>
+          </footer>
+        </article>`);
     return $tweet;
   }
 
   //loop through the array of tweets
-  const renderTweets = function(tweets) {
+  const renderTweets = function (tweets) {
     let $tweet;
     for (const tweet of tweets) {
       $tweet = createTweetElement(tweet);
@@ -51,9 +52,10 @@ $(function() {
   loadTweets();
 
   //Ajax call to post the new tweet
-  $("form").on("submit", function(event) {
+  $("form").on("submit", function (event) {
     event.preventDefault();
     const text = event.target.text.value;
+
     if (text === "") {
       $(".error").html("Error: Tweet can't be empty!!").css("display", "block");
       setTimeout(() => {
@@ -81,7 +83,7 @@ $(function() {
   });
 
   //Transform user input to prevent sending script to server
-  const escape = function(str) {
+  const escape = function (str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;

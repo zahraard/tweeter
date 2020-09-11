@@ -16,6 +16,6 @@ header span {
 
 @media only screen and (min-width: 1024px) {
   header#main-header {
-    margin: 120px 50px 0;
+    margin: 200px 50px 0;
   }
 }

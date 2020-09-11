@@ -14,6 +14,7 @@ article.tweet {
 .tweet-content p {
   font-weight: 600;
   padding: 0 15px;
+  word-break: break-all;
 }
 article.tweet header p {
   font-weight: 600;
@@ -26,7 +27,7 @@ article.tweet:hover header p {
   visibility: visible;
   opacity: 0.6;
 }
-article.tweet:hover{
+article.tweet:hover {
   box-shadow: 8px 8px 0 #9daeca;
 }
 article.tweet header,
@@ -56,3 +57,23 @@ footer p.published-date {
 footer span img {
   width: 24px;
 }
+.scrollToTop{
+  display:none;
+  width:100px; 
+  height:130px;
+  padding:10px; 
+  position: fixed;
+  bottom: 0px;
+  right: 0px;
+}
+.scrollToTop img{
+  background: #dc2b2a;
+  padding: 20px;
+  border-radius: 100px;
+  transition: all .2s ease-in-out;
+}
+.scrollToTop img:hover{
+  cursor: pointer;
+  background: #b22024;
+}
+

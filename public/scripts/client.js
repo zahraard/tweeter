@@ -1,4 +1,5 @@
 $(function () {
+ 
   function createTweetElement(tweet) {
     const $tweet = $(`<article class="tweet">
     <header>
@@ -12,7 +13,7 @@ $(function () {
       <p>${tweet.content.text}</p>
     </div>
     <footer>
-      <p class="published-date">10 days ago</p>
+      <p class="published-date">${time}</p>
       <span>
         <img src="/images/flag24.png">
         <img src="/images/retweet30px.png">
@@ -83,4 +84,6 @@ $(function () {
     $('.new-tweet').slideToggle();
     $('#tweet-text').focus();
   })
+
+  console.log('date', new Date(1382086394000))
 });

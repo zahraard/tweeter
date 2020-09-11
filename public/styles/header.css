@@ -1,4 +1,4 @@
-header#main-header {
+#main-header {
   height: 500px;
   width: 100%;
   display: flex;
@@ -10,12 +10,13 @@ header#main-header {
   color: #fff;
 }
 
-header span {
+#main-header span {
   font-weight: 300;
 }
 
+/* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
-  header#main-header {
+  #main-header {
     margin: 200px 50px 0;
   }
 }

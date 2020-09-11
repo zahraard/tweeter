@@ -28,9 +28,11 @@
 .counter {
   font-family: Bungee;
 }
+
 .counter.red {
   color: red;
 }
+
 .tweet-button {
   font-family: Bungee;
   background-color: #4056a1;
@@ -65,20 +67,17 @@
   font-family: "Open Sans", sans-serif;
   font-size: 18px;
   font-weight: 600;
-  border-left-color: #d9534f; /* Left side border color */
-  background-color: rgba(
-    217,
-    83,
-    79,
-    0.1
-  ); /*Same color as the left border with reduced alpha to 0.1*/
+  border-left-color: #d9534f;
+  background-color: rgba(217, 83, 79, 0.1);
 }
 
+/* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
   .container {
     flex: 3;
     margin-top: 120px;
   }
+
   #main-header {
     flex: 2;
   }

@@ -1,6 +1,12 @@
-$(function () {
- 
+$(function() {
+  //render time using moment.js
+  const renderTime = function(tweet) {
+    return moment(tweet.created_at).fromNow();
+  };
+
+  //create template for new tweet
   function createTweetElement(tweet) {
+    const time = renderTime(tweet);
     const $tweet = $(`<article class="tweet">
     <header>
       <div>
@@ -14,7 +20,7 @@ $(function () {
     </div>
     <footer>
       <p class="published-date">${time}</p>
-      <span>
+      <span id="tweet-icons">
         <img src="/images/flag24.png">
         <img src="/images/retweet30px.png">
         <img src="/images/heart.png">
@@ -23,7 +29,9 @@ $(function () {
   </article>`);
     return $tweet;
   }
-  const renderTweets = function (tweets) {
+
+  //loop through the array of tweets
+  const renderTweets = function(tweets) {
     let $tweet;
     for (const tweet of tweets) {
       $tweet = createTweetElement(tweet);
@@ -43,13 +51,11 @@ $(function () {
   loadTweets();
 
   //Ajax call to post the new tweet
-  $("form").on("submit", function (event) {
+  $("form").on("submit", function(event) {
     event.preventDefault();
     const text = event.target.text.value;
     if (text === "") {
-      $(".error")
-        .html("Error: Tweet can't be empty!!")
-        .css("display", "block");
+      $(".error").html("Error: Tweet can't be empty!!").css("display", "block");
       setTimeout(() => {
         $(".error").css("display", "none");
       }, 4000);
@@ -65,7 +71,7 @@ $(function () {
       const data = escape(formData);
       console.log(data);
       $.post("/tweets/", data)
-        .then((response) => {
+        .then(() => {
           loadTweets();
           $("form")[0].reset();
           $(".counter").html("<strong>140</strong>");
@@ -74,16 +80,16 @@ $(function () {
     }
   });
 
-  const escape = function (str) {
+  //Transform user input to prevent sending script to server
+  const escape = function(str) {
     let div = document.createElement("div");
     div.appendChild(document.createTextNode(str));
     return div.innerHTML;
   };
 
-  $('.right-text').on('click',()=>{
-    $('.new-tweet').slideToggle();
-    $('#tweet-text').focus();
-  })
-
-  console.log('date', new Date(1382086394000))
+  //Toggle the new tweet section by clicking on the button on top right corner of the page
+  $(".nav-right-text").on("click", () => {
+    $(".new-tweet").slideToggle();
+    $("#tweet-text").focus();
+  });
 });

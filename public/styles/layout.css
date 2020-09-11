@@ -1,39 +1,34 @@
-/*
- * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
- * https://css-tricks.com/international-box-sizing-awareness-day/
- * Do not modify these two selectors, please
- */
 html {
   box-sizing: border-box;
 }
+
 *,
 *:before,
 *:after {
   box-sizing: inherit;
 }
 
-/*
- * Global layout stuff
- */
+/*Global layout stuff*/
 
 body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
   font-family: "Source Sans Pro", sans-serif;
- 
-  /* justify-content: center; */
 }
-.tweeter-body{
+
+.tweeter-body {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 main {
   width: 90%;
   padding: 50px 0;
 }
 
+/* Laptops / Desktops: minimum width of 1024px */
 @media only screen and (min-width: 1024px) {
   .tweeter-body {
     flex-direction: row;

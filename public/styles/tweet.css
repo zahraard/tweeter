@@ -3,6 +3,7 @@ article.tweet {
   border: 4px solid #666;
   margin: 30px 0;
 }
+
 #tweets-container {
   margin: 20px 40px;
 }
@@ -11,25 +12,29 @@ article.tweet {
   padding-bottom: 15px;
   border-bottom: 4px solid #666;
 }
+
 .tweet-content p {
   font-weight: 600;
   padding: 0 15px;
-  word-break: break-all;
+  word-break: break-word;
 }
+
 article.tweet header p {
   font-weight: 600;
-  opacity: 0.5;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.3s linear, opacity 0.3s linear;
 }
+
 article.tweet:hover header p {
   visibility: visible;
   opacity: 0.6;
 }
+
 article.tweet:hover {
   box-shadow: 8px 8px 0 #9daeca;
 }
+
 article.tweet header,
 article.tweet footer {
   display: flex;
@@ -37,43 +42,65 @@ article.tweet footer {
   align-items: center;
   padding: 0 10px;
 }
+
 article.tweet footer {
   margin-top: 10px;
 }
+
 article.tweet header > div {
   display: flex;
   align-items: center;
 }
+
 article.tweet header img {
   width: 50px;
   margin-right: 8px;
 }
+
 footer p.published-date {
   margin: 0;
   padding-top: 5px;
   font-size: 0.6em;
   font-weight: 600;
 }
-footer span img {
+
+#tweet-icons{
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s linear, opacity 0.3s linear;
+}
+
+#tweet-icons:hover {
+  cursor: pointer;
+}
+
+article.tweet:hover #tweet-icons {
+  visibility: visible;
+  opacity: 1;
+}
+
+#tweet-icons img {
   width: 24px;
 }
-.scrollToTop{
-  display:none;
-  width:100px; 
-  height:130px;
-  padding:10px; 
+
+.scrollToTop {
+  display: none;
+  width: 100px;
+  height: 130px;
+  padding: 10px;
   position: fixed;
   bottom: 0px;
   right: 0px;
 }
-.scrollToTop img{
+
+.scrollToTop img {
   background: #dc2b2a;
   padding: 20px;
   border-radius: 100px;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
-.scrollToTop img:hover{
+
+.scrollToTop img:hover {
   cursor: pointer;
   background: #b22024;
 }
-
